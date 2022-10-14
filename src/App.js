@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 
+import ClassComponent from './pages/ClassComponent';
+import FunctionalComponent from './pages/FunctionalComponent';
+
+import {useState} from 'react';
+import { Route, Routes } from 'react-router-dom';
+import TestComponent from './pages/TestComponent';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [name,setName]=useState("Triranjan")
+
+ return (
+  <Routes>
+    <Route path='/' element={<ClassComponent/>}/>
+    <Route path='/functional-component' element={<FunctionalComponent name={name} age={20} internship={"Devtown"} setName={setName}/>}/>
+    <Route path='/test-component' element={<TestComponent/>}/>
+  </Routes>
+  
+ )
 }
 
 export default App;
